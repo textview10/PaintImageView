@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.demo.drawpaintview.MainActivity">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_main_scale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="放大" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_main_rotate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="旋转" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_main_undo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="撤销" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_main_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="清空" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_main_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="保存" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <com.demo.drawpaintview.view.DrawPaintView
+        android:id="@+id/dpv_main_test"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
