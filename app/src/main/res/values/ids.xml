@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="id_circle_menu_item_image" type="id"/>
+    <item name="id_circle_menu_item_text" type="id"/>
+    <item name="id_circle_menu_item_center" type="id"/>
+    <item name="viewpager_tag" type="id"/>
+    <item name="glide_tag_id" type="id"/>
+    <item type="id" name="bgaqrcode_camera_preview" />
+</resources>

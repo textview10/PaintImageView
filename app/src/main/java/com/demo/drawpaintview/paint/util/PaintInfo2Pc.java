@@ -1,13 +1,14 @@
-package com.demo.drawpaintview.view;
+package com.demo.drawpaintview.paint.util;
+
+
 
 /**
- * 向pc端发送点和线信息的类
  * Created by xu.wang
- * Date on 2017/1/19 14:02
+ * Date on 2017/test1/19 14:02
+ * 向pc端发送点和线信息的类
  */
 public class PaintInfo2Pc {
-    private String TAG = getClass().getSimpleName().toString();
-    private boolean isSend = false;  //是否将点发送到pc端,默认不发送
+    private boolean isSend = true;  //是否将点发送到pc端,默认发送
 
     public PaintInfo2Pc() {
     }
@@ -17,10 +18,11 @@ public class PaintInfo2Pc {
         this.isSend = isSend;
     }
 
-    public void sendDownInfo(String lineId, int currntColor, int currentPaintSize, float moveX, float moveY) {
+    public void sendDownInfo(String lineId, String type, int currntColor, int currentPaintSize, float moveX, float moveY) {
         if (!isSend) {
             return;
         }
+
     }
 
     /**
@@ -36,6 +38,14 @@ public class PaintInfo2Pc {
         if (!isSend) {
             return;
         }
+
+    }
+
+    public void setMoveShape(String lineId, int currentPoint, float mX, float mY) {
+        if (!isSend) {
+            return;
+        }
+
     }
 
     /**
@@ -53,7 +63,7 @@ public class PaintInfo2Pc {
         }
     }
 
-    public void send2ShowPicture(String name) {
+    public void sendRedoInfo(String shapeId) {
         if (!isSend) {
             return;
         }
@@ -82,4 +92,11 @@ public class PaintInfo2Pc {
             return;
         }
     }
+
+    public void clearMatrix() {
+        if (!isSend) {
+            return;
+        }
+    }
+
 }
