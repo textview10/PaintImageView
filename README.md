@@ -1,4 +1,8 @@
+
+Android 可以在ViewPager中使用的可以画线,放大,保存,点击删除线条的自定义图片显示控件
+
 详情请查看
+
 http://blog.csdn.net/baidu_33546245/article/details/71963834
 
 # DrawPaintView 调用api
