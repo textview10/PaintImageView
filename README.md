@@ -1,3 +1,6 @@
+详情请查看
+http://blog.csdn.net/baidu_33546245/article/details/71963834
+
 # DrawPaintView 调用api
 
 setScale(float scale)	//设置当前图片在自适应控件后的放大倍数,尚不能使用
