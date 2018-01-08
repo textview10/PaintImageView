@@ -11,8 +11,8 @@ import android.widget.Toast;
 import com.demo.drawpaintview.R;
 import com.demo.drawpaintview.adapter.PaintPageAdapter;
 import com.demo.drawpaintview.paint.PaintImageView;
-import com.demo.drawpaintview.paint.bean.LineInfo;
 import com.demo.drawpaintview.paint.bean.PageInfo;
+import com.demo.drawpaintview.paint.bean.shape.LineInfo;
 
 import java.util.ArrayList;
 
@@ -38,8 +38,10 @@ public class MainActivity extends AppCompatActivity {
     AppCompatButton btn_redo;
     @BindView(R.id.btn_main_clear)
     AppCompatButton btn_clear;
-    @BindView(R.id.btn_main_eraser)
-    AppCompatButton btn_eraser;
+    @BindView(R.id.btn_main_arrow)
+    AppCompatButton btn_arrow;
+    @BindView(R.id.btn_main_ellipse)
+    AppCompatButton btn_ellipse;
 
     public int mCurrentPosition = 0;
     public PaintImageView mCurrentImageView;   //当前的paintImageView;
@@ -80,8 +82,8 @@ public class MainActivity extends AppCompatActivity {
         mCurrentImageView = (PaintImageView) mViewPager.findViewWithTag(mCurrentPosition);
     }
 
-    @OnClick({R.id.btn_main_scale, R.id.btn_main_undo, R.id.btn_main_redo, R.id.btn_main_eraser,
-            R.id.btn_main_rectangle, R.id.btn_main_clear, R.id.btn_main_line})
+    @OnClick({R.id.btn_main_scale, R.id.btn_main_undo, R.id.btn_main_redo, R.id.btn_main_arrow,
+            R.id.btn_main_rectangle, R.id.btn_main_clear, R.id.btn_main_line,R.id.btn_main_ellipse})
     void OnClick(View view) {
         getCurrentPage();
         if (mCurrentImageView == null) {
@@ -103,13 +105,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn_main_redo:
                 mCurrentImageView.redo();
                 break;
-            case R.id.btn_main_eraser:
-                if (mDrawState == DRAW_STATE.ERASER) {
-//                    Toast.makeText(this,"当前是")
-                } else {
-                    mDrawState = DRAW_STATE.ERASER;
-                    mCurrentImageView.setEraserState();
-                }
+            case R.id.btn_main_arrow:
+                mCurrentImageView.setDrawArrow();
                 break;
             case R.id.btn_main_rectangle:
                 if (mDrawState == DRAW_STATE.DRAW_RECTANGLE) {
@@ -129,6 +126,9 @@ public class MainActivity extends AppCompatActivity {
                     mDrawState = DRAW_STATE.DRAW_BEZIER;
                     mCurrentImageView.setDrawHandWrite();
                 }
+                break;
+            case R.id.btn_main_ellipse:
+                mCurrentImageView.setDrawEllipse();
                 break;
         }
     }

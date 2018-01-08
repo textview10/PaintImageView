@@ -1,5 +1,6 @@
-package com.demo.drawpaintview.paint.bean;
+package com.demo.drawpaintview.paint.bean.shape;
 
+import android.graphics.PointF;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -7,33 +8,36 @@ import java.util.ArrayList;
 
 /**
  * Created by xu.wang
- * Date on 2017/test1/19 15:00
+ * Date on 2017/1/19 15:00
  * 绘画的每一条直线的对象
  */
 public class LineInfo implements Parcelable {
     private String lineId;  //直线的id
     private int color;
     private int strokeWidth;
-    //0,贝塞尔曲线, test1,荧光笔,test2, 矩形 , 3 椭圆, 4,箭头
+    private int isDelete = 0;     //是否将线条绘制到canvas上,1为已删除,不绘制,0未删除,绘制
+    //0,贝塞尔曲线, 1,荧光笔,2, 矩形 , 3 椭圆, 4,箭头 5,田字格,6米字格,7,四线格8,直线
     private int type = 0;
-    public ArrayList<PointInfo> currentPointLists = new ArrayList<>();
+    public ArrayList<PointF> pointLists = new ArrayList<>();
 
-    public LineInfo() {
+    public LineInfo(String lineId, int color, int strokeWidth, int type, ArrayList<PointF> pointLists) {
+        this.lineId = lineId;
+        this.color = color;
+        this.strokeWidth = strokeWidth;
+        this.type = type;
+        this.pointLists = pointLists;
     }
 
-    public LineInfo(String lineId, int color,int strokeWidth, ArrayList<PointInfo> pointLists) {
-        this.lineId = lineId;
-        this.strokeWidth = strokeWidth;
-        this.color = color;
-        this.currentPointLists = pointLists;
+    public LineInfo() {
     }
 
     protected LineInfo(Parcel in) {
         lineId = in.readString();
         color = in.readInt();
         strokeWidth = in.readInt();
-        currentPointLists = in.createTypedArrayList(PointInfo.CREATOR);
+        isDelete = in.readInt();
         type = in.readInt();
+        pointLists = in.createTypedArrayList(PointF.CREATOR);
     }
 
     public static final Creator<LineInfo> CREATOR = new Creator<LineInfo>() {
@@ -54,14 +58,6 @@ public class LineInfo implements Parcelable {
 
     public void setLineId(String lineId) {
         this.lineId = lineId;
-    }
-
-    public ArrayList<PointInfo> getCurrentPointLists() {
-        return currentPointLists;
-    }
-
-    public void setCurrentPointLists(ArrayList<PointInfo> mCurrentPointLists) {
-        this.currentPointLists = mCurrentPointLists;
     }
 
     public int getColor() {
@@ -88,8 +84,20 @@ public class LineInfo implements Parcelable {
         this.type = type;
     }
 
-    public static Creator<LineInfo> getCREATOR() {
-        return CREATOR;
+    public int getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(int isDelete) {
+        this.isDelete = isDelete;
+    }
+
+    public ArrayList<PointF> getPointLists() {
+        return pointLists;
+    }
+
+    public void setPointLists(ArrayList<PointF> pointLists) {
+        this.pointLists = pointLists;
     }
 
     @Override
@@ -98,11 +106,13 @@ public class LineInfo implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(lineId);
-        parcel.writeInt(color);
-        parcel.writeInt(strokeWidth);
-        parcel.writeTypedList(currentPointLists);
-        parcel.writeInt(type);
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(lineId);
+        dest.writeInt(color);
+        dest.writeInt(strokeWidth);
+        dest.writeInt(isDelete);
+        dest.writeInt(type);
+        dest.writeTypedList(pointLists);
     }
+
 }

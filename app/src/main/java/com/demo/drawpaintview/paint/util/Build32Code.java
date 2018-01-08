@@ -1,14 +1,17 @@
-package com.demo.drawpaintview.util;
+package com.demo.drawpaintview.paint.util;
 
 import java.util.Random;
 
 /**
- * Created by：xu.wang on 2017/5/14 10:55
+ * 生成32位二进制码
+ * 
+ * @author 张迎迎
+ * 
  */
 public class Build32Code {
 	/**
 	 * 随机生成36位id
-	 * 
+	 *
 	 * @return
 	 */
 	public static String createGUID() {

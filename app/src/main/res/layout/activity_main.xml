@@ -31,8 +31,18 @@
                 android:id="@+id/btn_main_rectangle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="正方形" />
+                android:text="长方形" />
 
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_main_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="箭头" />
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_main_ellipse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="椭圆" />
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btn_main_undo"
                 android:layout_width="wrap_content"
@@ -44,12 +54,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="恢复" />
-
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/btn_main_eraser"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="橡皮" />
 
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btn_main_clear"
